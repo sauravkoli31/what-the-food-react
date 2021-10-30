@@ -11,22 +11,24 @@ function GetRestaurantsButton() {
 
   const handleChange = () => {
       if (!!userData.restaurantsList){
-          let urlencoded = new URLSearchParams();
-          urlencoded.append("id", userData?.locationId);
-          urlencoded.append("chosenCuisines", userData?.cuisineSelect);
-          let options = {
-            method: "POST",
-            body: urlencoded,
-          };
-          let url = `${process.env.REACT_APP_API_SERVER}/getRestaurants`;
-          fetch(url, options)
-            .then((data) => data.json())
-            .then((data) => {
-              dispatch(setRestaurantsList(data.response));
-              selectRandomRestaurant(data.response)
-            });
+        let urlencoded = new URLSearchParams();
+        urlencoded.append("id", userData?.locationId);
+        urlencoded.append("chosenCuisines", userData?.cuisineSelect);
+        let options = {
+          method: "POST",
+          body: urlencoded,
+        };
+        let url = `${process.env.REACT_APP_API_SERVER}/getRestaurants`;
+        fetch(url, options)
+        .then((data) => data.json())
+        .then((data) => {
+          dispatch(setRestaurantsList(data.response));
+          selectRandomRestaurant(data.response)
+        });
       }
-      selectRandomRestaurant(userData.restaurantsList)
+      if (userData.restaurantsList){
+        selectRandomRestaurant(userData.restaurantsList)
+      }
   };
 
   const random_item = (items) =>
