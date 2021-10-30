@@ -10,7 +10,9 @@ function GetRestaurantsButton() {
   const dispatch = useDispatch();
 
   const handleChange = () => {
-      if (!!userData.restaurantsList){
+    dispatch(removeSelected())
+    let haveRestaurantList = userData.restaurantsList.length > 0  
+    if (!haveRestaurantList){
         let urlencoded = new URLSearchParams();
         urlencoded.append("id", userData?.locationId);
         urlencoded.append("chosenCuisines", userData?.cuisineSelect);
@@ -26,7 +28,7 @@ function GetRestaurantsButton() {
           selectRandomRestaurant(data.response)
         });
       }
-      if (userData.restaurantsList){
+      if (haveRestaurantList){
         selectRandomRestaurant(userData.restaurantsList)
       }
   };
@@ -36,11 +38,20 @@ function GetRestaurantsButton() {
 
   const selectRandomRestaurant = (array) => {
     if (array.length > 0) {
-      let restaurantsIds = array.map((data) => data.id);
+      let restaurantsIds = array;
       let selectedRestaurant = random_item(restaurantsIds)
-      dispatch(setSelectedRestaurant(array.find(
-        place => place.id === selectedRestaurant
-      )))
+      let urlencoded = new URLSearchParams();
+        urlencoded.append("id", selectedRestaurant);
+        let options = {
+          method: "POST",
+          body: urlencoded,
+        };
+        let url = `${process.env.REACT_APP_API_SERVER}/getRestaurantsById`;
+        fetch(url, options)
+        .then((data) => data.json())
+        .then((data) => {
+          dispatch(setSelectedRestaurant(data?.response))
+        });
     }
   };
 
