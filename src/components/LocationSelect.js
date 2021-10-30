@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Button, Typography } from "@mui/material";
 import CardView from "./CardView";
 import locationsPhoto from "../static/images/10891.jpg";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, useState } from "react-redux";
 import { setLocation, setCuisine, removeAll } from "../redux/userData";
 
 function LocationSelect() {
@@ -59,7 +59,20 @@ function LocationSelect() {
           onClick={handleClick}
           sx={{ m: 1, width: 200, height: 55 }}
         >
-          <Typography variant="button" fontFamily= "Barlow, sans-serif" color="white" fontWeight="800">Location</Typography>
+          <Typography
+            variant="button"
+            fontFamily="Barlow, sans-serif"
+            color="white"
+            fontWeight="800"
+          >
+            Location
+            {navigator.geolocation
+              ? navigator.geolocation.getCurrentPosition(
+                  this.showPosition,
+                  this.showError
+                )
+              : "geolocation not support"}
+          </Typography>
         </Button>
       </CardView>
     </div>
