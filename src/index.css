@@ -112,9 +112,9 @@ body {
   flex-wrap: wrap;
 }
 
-.foodImages {
+/* .foodImages {
   width: calc(--width - 50%) !important;
-}
+} */
 
 .firstElem {
   flex-grow: 3 !important;
