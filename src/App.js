@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import GetRestaurantsButton from "./components/GetRestaurantsButton";
 import SelectedRestaurant from "./components/SelectedRestaurant";
-import { Card, CardActions, CardContent, CardMedia } from "@mui/material";
+import { Card, CardContent, CardMedia } from "@mui/material";
 import Divider from "@mui/material/Divider";
 require('dotenv').config()
 
@@ -18,12 +18,11 @@ function App() {
   let isRandomRestaurant = userData?.selectedRestaurant;
   let topSellingItemPresent =
     userData?.selectedRestaurant?.mostSellingItems?.length > 0;
-  console.log(isRandomRestaurant);
   return (
     <div className="App">
       <div className="mainContent">
         <Box
-          className="topBox"
+          className="topBox curved-edges"
           sx={{
             width: "100%",
             // height: "7vh",
@@ -48,7 +47,7 @@ function App() {
         </Box>
       </div>
       <div className={`mainContent`} style={{maxWidth: "80%", margin: "0 auto"}}>
-        <div className="flex-item firstElem">
+        <div className="flex-item">
         <LocationSelect
           className="flex-item"
           sx={{
@@ -59,9 +58,9 @@ function App() {
         />
         </div>
         {isCuisineVisible && (
-        <div className="flex-item new-item">
+        <div className="flex-item">
           <CuisineSelect
-            className={`flex-item ${isCuisineVisible && "new-item"}`}
+            
             sx={{
               boxShadow: 1,
               flex: "1 0 auto",
@@ -71,7 +70,7 @@ function App() {
         </div>
         )}
         {isCuisineSelected && 
-        <div className="flex-item new-item1" style={{flexGrow:"1", flex:"1"}}>
+        <div className="flex-item">
         <GetRestaurantsButton />
         </div>
         }
@@ -90,7 +89,7 @@ function App() {
                 padding: "1em 2em",
                 width: "fit-content",
               }}
-              className="cardStyle muted-color"
+              className="curved-edges muted-color"
             >
               <Typography
                 variant="button"
@@ -119,7 +118,7 @@ function App() {
                 padding: "1em 2em",
                 width: "fit-content",
               }}
-              className="cardStyle muted-color"
+              className="curved-edges muted-color"
             >
               <Typography
                 variant="button"
@@ -135,10 +134,11 @@ function App() {
           )}
           <div className={"mainContent foodContent"}>
             {isRandomRestaurant &&
-              userData?.selectedRestaurant?.mostSellingItems?.map((items) => {
+              userData?.selectedRestaurant?.mostSellingItems?.map((items, itemsKey) => {
                 return (
                   <Card
-                    className="cardStyle foodImages"
+                    key={itemsKey}
+                    className="curved-edges foodImages"
                     sx={{
                       boxShadow: 1,
                       margin: 1,

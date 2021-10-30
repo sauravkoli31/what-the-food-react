@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { useTheme } from '@mui/material/styles';
 import CardView from "./CardView";
 import Box from '@mui/material/Box';
@@ -57,13 +57,13 @@ function CuisineSelect() {
       description="What cuisine do you have in mind?"
       image={foodPhoto}
       >
-        <FormControl sx={{ m: 1, width: 500 }} className="selectInput">
+        <FormControl sx={{ m: 1, width: 500 }} className="curved-edges">
           <InputLabel id="multiple-chip-label">Cuisine</InputLabel>
           <Select
             labelId="multiple-chip-label"
             id="multiple-chip"
             multiple
-            className="selectInput"
+            className="curved-edges"
             variant="filled"
             disabled={!(userData?.cuisine?.length > 0)}
             value={userData?.cuisineSelect}

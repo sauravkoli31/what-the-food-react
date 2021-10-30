@@ -54,7 +54,7 @@ function LocationSelect() {
       >
         <Button
           variant="contained"
-          className="buttonStyle muted-color"
+          className="curved-edges muted-color"
           size="large"
           onClick={handleClick}
           sx={{ m: 1, width: 200, height: 55 }}

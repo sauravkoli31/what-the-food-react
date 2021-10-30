@@ -12,12 +12,12 @@ function CardView(props) {
     return (
         <div>
             <Card
-            className="cardStyle"
+            className="curved-edges"
                 sx={{
                     boxShadow: 1,
                     flex: "1 0 auto",
                     margin: props.margin || 3 ,
-                    width: props.width || 450,
+                    width: props.width,
                     minHeight: 300
                 }}>
                 <CardMedia

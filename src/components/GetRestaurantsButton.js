@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "@mui/material";
 import searchButtonImage from "../static/images/searchButton.png";
 import { useSelector, useDispatch } from "react-redux";
-import { setRestaurantsList, setSelectedRestaurant, removeAll } from "../redux/userData";
+import { setRestaurantsList, setSelectedRestaurant, removeSelected } from "../redux/userData";
 import Typography from '@mui/material/Typography';
 
 function GetRestaurantsButton() {
@@ -48,7 +48,7 @@ function GetRestaurantsButton() {
     <Button
       sx={{ m: 1, width: 150}}
       variant="contained"
-      className="buttonStyle muted-color-1"
+      className="curved-edges muted-color-1"
       size="large"
       onClick={handleChange}
     >
@@ -56,7 +56,7 @@ function GetRestaurantsButton() {
       <Typography variant="button" noWrap component="div" fontFamily= "Barlow, sans-serif" color="white" fontWeight="800" marginTop="1.7vh">
           Search
           </Typography>
-      <img src={`${searchButtonImage}`} loading="lazy" height={150} />
+      <img src={`${searchButtonImage}`} alt="Bhook toh lagi hai. dabba ke dekh." loading="lazy" height={150} />
       </div>
     </Button>
   );

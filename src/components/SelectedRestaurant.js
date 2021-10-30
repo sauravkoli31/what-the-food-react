@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { setSelectedRestaurantLink, removeAll } from "../redux/userData";
+import { setSelectedRestaurantLink } from "../redux/userData";
 
 
 function SelectedRestaurant(props) {
@@ -36,7 +36,7 @@ function SelectedRestaurant(props) {
 
   return (
     <div>
-      <Card sx={{ maxWidth: 600, marginRight: 5 }} className="cardStyle ">
+      <Card sx={{ maxWidth: 600 }} className="curved-edges">
         <CardActionArea onClick={() => userData?.selectedRestaurantLink && window.open(userData?.selectedRestaurantLink, "_blank")}>
           <CardMedia
             component="img"
