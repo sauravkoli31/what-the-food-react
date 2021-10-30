@@ -6,15 +6,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #eae7dc;
-  /* background: linear-gradient(
-    225deg,
-    rgba(234, 231, 220, 0.92) 0%,
-    rgba(234, 231, 220, 0.92) 35%,
-    rgba(255, 224, 203, 1) 100%
-  ); */
   background-repeat: no-repeat;
   background-size: auto;
   height: 100vh;
+}
+
+.curved-edges{
+  border-top-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+  border-bottom-right-radius: 30px !important;
+  border-bottom-left-radius: 30px !important;
 }
 
 .mainContent {
@@ -22,6 +23,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .flex-item {
@@ -30,14 +32,6 @@ body {
   overflow: hidden;
   transition: all 500ms linear !important;
   text-align: -webkit-center;
-}
-
-.buttonStyle {
-  color: black !important;
-  border-top-left-radius: 30px !important;
-  border-top-right-radius: 30px !important;
-  border-bottom-right-radius: 30px !important;
-  border-bottom-left-radius: 30px !important;
 }
 
 .muted-color {
@@ -53,39 +47,13 @@ body {
 
 #multiple-chip {
   background-color: rgba(255, 228, 210, 0.924) !important;
-  color: black !important;
   border-top-left-radius: 30px !important;
   border-top-right-radius: 30px !important;
   border-bottom-right-radius: 30px !important;
   border-bottom-left-radius: 30px !important;
-}
-
-.selectInput {
-  border-top-left-radius: 30px !important;
-  border-top-right-radius: 30px !important;
-  border-bottom-right-radius: 30px !important;
-  border-bottom-left-radius: 30px !important;
-}
-
-.cardStyle {
-  border-top-left-radius: 30px !important;
-  border-top-right-radius: 30px !important;
-  border-bottom-right-radius: 30px !important;
-  border-bottom-left-radius: 30px !important;
-  /* background: linear-gradient(
-    to right bottom,
-  #d8c3a4,
-  #D8C3A4
-
-  ) !important;   */
-  /* border:2px solid #d8c3a5; */
 }
 
 .topBox {
-  border-top-left-radius: 15px !important;
-  border-top-right-radius: 15px !important;
-  border-bottom-right-radius: 15px !important;
-  border-bottom-left-radius: 15px !important;
   background-color: #f3aa80 !important;
 }
 
@@ -104,26 +72,15 @@ body {
   }
 }
 
-/* .cardStyle {
-  animation: 0.7s ease-in 0s 1 zoom-in-zoom-out;
-} */
-
 .foodContent {
   flex-wrap: wrap;
 }
 
-/* .foodImages {
-  width: calc(--width - 50%) !important;
-} */
-
 .firstElem {
   flex-grow: 3 !important;
-  flex: 3;
 }
 
 .new-item {
-  /* 0 does not work so we have to use a small number */
-  /* Start our small */
   flex: 0.00001;
   -webkit-animation: flexGrow 700ms cubic-bezier(0.7, 0.04, 0, 1.06) forwards;
   -o-animation: flexGrow 700ms cubic-bezier(0.7, 0.04, 0, 1.06) forwards;
@@ -147,8 +104,6 @@ body {
 }
 
 .new-item1 {
-  /* 0 does not work so we have to use a small number */
-  /* Start our small */
   flex: 0.00001;
   -webkit-animation: flexGrow1 700ms cubic-bezier(0.7, 0.04, 0, 1.06) forwards;
   -o-animation: flexGrow1 700ms cubic-bezier(0.7, 0.04, 0, 1.06) forwards;
