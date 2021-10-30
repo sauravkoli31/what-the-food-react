@@ -43,6 +43,10 @@ export const userdataConfig = createSlice({
       state.selectedRestaurantLink = action.payload;
     //   localStorage.setItem(storeItem, JSON.stringify(state));
     },
+    removeSelected: (state) => {
+      state.selectedRestaurant = null;
+      state.selectedRestaurantLink = null;
+    },
     removeAll: (state) => {
       state.location = null;
       state.cuisine = null;
@@ -63,6 +67,7 @@ export const {
   setRestaurantsList,
   setSelectedRestaurant,
   setSelectedRestaurantLink,
+  removeSelected,
   removeAll,
 } = userdataConfig.actions;
 
