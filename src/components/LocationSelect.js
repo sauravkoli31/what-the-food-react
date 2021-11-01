@@ -52,14 +52,14 @@ function LocationSelect() {
         title="Location"
         description={`What is your current location.\n${geo ? geo
           : "geolocation not support"}`}
-        image={locationsPhoto}
+        // image={locationsPhoto}
       >
         <Button
           variant="contained"
           className="curved-edges muted-color"
           size="large"
           onClick={handleClick}
-          sx={{ m: 1, width: 200, height: 55 }}
+          sx={{ m: 1, width: 200 }}
         >
           <Typography
             variant="button"

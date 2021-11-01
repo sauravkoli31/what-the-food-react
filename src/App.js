@@ -1,171 +1,80 @@
 import "./App.css";
-import CuisineSelect from "./components/CuisineSelect";
-import LocationSelect from "./components/LocationSelect";
-import { useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import GetRestaurantsButton from "./components/GetRestaurantsButton";
-import SelectedRestaurant from "./components/SelectedRestaurant";
-import { Card, CardContent, CardMedia } from "@mui/material";
-import Divider from "@mui/material/Divider";
-require('dotenv').config()
+import RestaurantView from "./components/RestaurantView";
+import QueryView from "./components/QueryView";
+import { Card, CardActionArea, CardMedia } from "@mui/material";
+import { useSelector } from "react-redux";
 
-
+require("dotenv").config();
 function App() {
   const userData = useSelector((state) => state.userData);
-  let isCuisineVisible = userData?.cuisine?.length > 0;
-  let isCuisineSelected = userData?.cuisineSelect?.length > 0;
-  let isRandomRestaurant = userData?.selectedRestaurant;
-  let topSellingItemPresent =
-    userData?.selectedRestaurant?.mostSellingItems?.length > 0;
+  const githubLinks = [
+    "https://github.com/sauravkoli31/what-the-food-react",
+    "https://github.com/sauravkoli31/what-the-food-backend",
+  ];
+
+  let isRandomRestaurantSelected = userData?.selectedRestaurant;
+
   return (
     <div className="App">
-      <div className="mainContent">
+      <div className="mainContent" style={{ justifyContent: "space-between" }}>
         <Box
-          className="topBox curved-edges"
           sx={{
-            width: "100%",
-            // height: "7vh",
-            marginTop: 3,
-            marginLeft: 5,
-            marginRight: 5,
-            backgroundColor: "primary.dark",
-            "&:hover": { opacity: [0.9, 0.8, 0.7] },
+            margin: "1em",
+            
           }}
         >
           <Typography
-            variant="h3"
+            variant="h2"
             noWrap
             component="div"
-            color="white"
-            fontFamily="Barlow, sans-serif"
-            fontWeight="800"
-            margin="1.7vh"
+            fontWeight="900"
+            fontFamily="Lato"
+            letterSpacing="5px"
           >
             WHAT THE FOOD
           </Typography>
         </Box>
-      </div>
-      <div className={`mainContent`} style={{maxWidth: "80%", margin: "0 auto"}}>
-        <div className="flex-item">
-        <LocationSelect
-          className="flex-item"
+        <Box
+          className="mainContent"
           sx={{
-            boxShadow: 1,
-            flex: "1 0 auto",
-            margin: 5,
+            margin: "1em",
+            padding: "1rem",
           }}
-        />
-        </div>
-        {isCuisineVisible && (
-        <div className="flex-item">
-          <CuisineSelect
-            
-            sx={{
-              boxShadow: 1,
-              flex: "1 0 auto",
-              margin: 5,
-            }}
-          />
-        </div>
-        )}
-        {isCuisineSelected && 
-        <div className="flex-item">
-        <GetRestaurantsButton />
-        </div>
-        }
-      </div>
-      <Divider sx={{ margin: 1 }} />
-      <div
-        className={"mainContent"}
-        style={{ marginX: 55, alignItems: "flex-start" }}
-      >
-        {isRandomRestaurant && (
-          <div style={{ textAlign: "left" }}>
-            <Card
-              style={{
-                marginTop: "1em",
-                marginBottom: "1em",
-                padding: "1em 2em",
-                width: "fit-content",
-              }}
-              className="curved-edges muted-color"
-            >
-              <Typography
-                variant="button"
-                style={{
-                  color: "white",
-                  fontFamily: "Barlow, sans-serif",
-                  fontWeight: "bolder",
-                }}
-              >
-                RESTAURANT
-              </Typography>
-            </Card>
-            <SelectedRestaurant
-              image={userData?.selectedRestaurant?.heroImage}
-              title={userData?.selectedRestaurant?.name}
-              logo={userData?.selectedRestaurant?.logo}
-            />
-          </div>
-        )}
-        <div style={{ textAlign: "left" }}>
-          {topSellingItemPresent && (
-            <Card
-              style={{
-                marginTop: "1em",
-                marginBottom: "1em",
-                padding: "1em 2em",
-                width: "fit-content",
-              }}
-              className="curved-edges muted-color"
-            >
-              <Typography
-                variant="button"
-                style={{
-                  color: "white",
-                  fontFamily: "Barlow, sans-serif",
-                  fontWeight: "bolder",
-                }}
-              >
-                TOP SELLING ITEM
-              </Typography>
-            </Card>
-          )}
-          <div className={"mainContent foodContent"}>
-            {isRandomRestaurant &&
-              userData?.selectedRestaurant?.mostSellingItems?.map((items, itemsKey) => {
-                return (
-                  <Card
-                    key={itemsKey}
-                    className="curved-edges foodImages"
+        >
+          <Typography
+            variant="body2"
+            noWrap
+            component="div"
+            fontWeight="900"
+            fontFamily="Lato"
+            letterSpacing="5px"
+          >
+            GTIHUB LINKS
+          </Typography>
+          {githubLinks.map((links, linksKey) => {
+            return (
+              <Card key={linksKey}>
+                <CardActionArea onClick={() => window.open(links, "_blank")}>
+                  <CardMedia
+                    component="img"
+                    image="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
                     sx={{
-                      boxShadow: 1,
-                      margin: 1,
-                      width: 250,
+                      maxWidth: "50px",
+                      borderRadius: "12px",
+                      margin: "0.5em",
                     }}
-                  >
-                    <CardMedia
-                      component="img"
-                      image={items.image}
-                      alt="green iguana"
-                    />
-                    <CardContent className="mainContent">
-                      <Typography
-                        component="div"
-                        variant="overline"
-                        sx={{
-                          lineHeight: 1.2,
-                        }}
-                      >
-                        {items.name}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-          </div>
-        </div>
+                  ></CardMedia>
+                </CardActionArea>
+              </Card>
+            );
+          })}
+        </Box>
+      </div>
+      <div className="mainContent" style={{alignItems:"flex-start"}}>
+        <QueryView />
+        {isRandomRestaurantSelected && <RestaurantView />}
       </div>
     </div>
   );

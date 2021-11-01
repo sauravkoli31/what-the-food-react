@@ -55,9 +55,9 @@ function CuisineSelect() {
       <CardView
       title="Cuisine"
       description="What cuisine do you have in mind?"
-      image={foodPhoto}
+      // image={foodPhoto}
       >
-        <FormControl sx={{ m: 1, width: 500 }} className="curved-edges">
+        <FormControl sx={{ m: 1, width: "100%" }} className="curved-edges">
           <InputLabel id="multiple-chip-label">Cuisine</InputLabel>
           <Select
             labelId="multiple-chip-label"

@@ -1,21 +1,19 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Lato";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #eae7dc;
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
   height: 100vh;
+  color: #0d0d0d;
 }
 
-.curved-edges{
-  border-top-left-radius: 30px !important;
-  border-top-right-radius: 30px !important;
-  border-bottom-right-radius: 30px !important;
-  border-bottom-left-radius: 30px !important;
+
+
+.curved-edges {
+  border-radius: 15px !important;
 }
 
 .mainContent {
@@ -35,7 +33,7 @@ body {
 }
 
 .muted-color {
-  background-color: rgb(246, 199, 167) !important;
+  background-color: #ef9273 !important;
 }
 
 .muted-color-1 {
@@ -47,10 +45,7 @@ body {
 
 #multiple-chip {
   background-color: rgba(255, 228, 210, 0.924) !important;
-  border-top-left-radius: 30px !important;
-  border-top-right-radius: 30px !important;
-  border-bottom-right-radius: 30px !important;
-  border-bottom-left-radius: 30px !important;
+  border-radius: 15px !important;
 }
 
 .topBox {
@@ -124,4 +119,51 @@ body {
   to {
     flex: 1;
   }
+}
+
+.foodImages::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.05) 50%,
+    rgba(0, 0, 0, 0.05) 85%
+  );
+}
+.foodImages > * {
+  z-index: 100;
+}
+
+.glassmorph {
+  background: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  backdrop-filter: blur(6.5px) !important;
+  -webkit-backdrop-filter: blur(6.5px) !important;
+  border-radius: 15px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
 }

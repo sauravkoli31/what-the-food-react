@@ -18,14 +18,16 @@ function CardView(props) {
                     flex: "1 0 auto",
                     margin: props.margin || 3 ,
                     width: props.width,
-                    minHeight: 300
+                    // minHeight: 300
                 }}>
+                {props.image && 
                 <CardMedia
                     component="img"
                     height={props.imageHeight||"140"}
                     image={props.image}
                     alt="green iguana"
                 />
+                }                    
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {props.title}
