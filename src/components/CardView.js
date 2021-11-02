@@ -29,7 +29,7 @@ function CardView(props) {
                 />
                 }                    
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography variant="h5" component="div">
                         {props.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">

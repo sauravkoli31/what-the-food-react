@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-  Button,
-} from "@mui/material";
-import Divider from "@mui/material/Divider";
-import placeholderHeroBanner from "../static/images/placeholder_image1-900x568.jpg";
-import CardView from "./CardView";
+import { Card } from "@mui/material";
 import LocationSelect from "./LocationSelect";
 import CuisineSelect from "./CuisineSelect";
 import GetRestaurantsButton from "./GetRestaurantsButton";

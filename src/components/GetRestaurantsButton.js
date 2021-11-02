@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "@mui/material";
-import searchButtonImage from "../static/images/searchButton.png";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setRestaurantsList,

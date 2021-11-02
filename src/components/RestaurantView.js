@@ -13,17 +13,14 @@ import { setSelectedRestaurantLink } from "../redux/userData";
 
 function RestaurantView() {
     const userData = useSelector((state) => state.userData);
-    let isCuisineVisible = userData?.cuisine?.length > 0;
-    let isCuisineSelected = userData?.cuisineSelect?.length > 0;
-    let isRandomRestaurant = userData?.selectedRestaurant;
     let topSellingItemPresent =
       userData?.selectedRestaurant?.mostSellingItems?.length > 0;
 
       const dispatch = useDispatch();
   useEffect(() => {
     let urlencoded = new URLSearchParams();
-    urlencoded.append("latitude", userData?.location?.latitude);
-    urlencoded.append("longitude", userData?.location?.longitude);
+    urlencoded.append("latitude", userData?.location?.lat);
+    urlencoded.append("longitude", userData?.location?.lng);
     urlencoded.append("restaurantId", userData?.selectedRestaurant?.id);
     let options = {
       method: "POST",
@@ -73,8 +70,7 @@ function RestaurantView() {
         <div
           style={{
             background: "rgb(255,255,255)",
-            background:
-              "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)",
+            background: "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)",
           }}
         >
           <CardContent

@@ -8,7 +8,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Chip from '@mui/material/Chip';
-import foodPhoto from "../static/images/44086.jpg";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setCuisineSelect } from "../redux/userData";
