@@ -59,12 +59,19 @@ function LocationSelect() {
           dispatch(setCuisine(data?.response));
         })
         .catch((error) => console.error(error));
+    } else {
+      window.alert("Please select a location in the map. Alternatively you can click on the map and allow the permission to get your location.")
     }
+    
   };
 
   return (
     <div>
-      <CardView title="Location">
+      <CardView
+        title="Location"
+        description="Select a location. Alternatively, you can just click on the map to allow the application to access your current locaiton."
+        backgroundColor="rgb(255,255,255,0.75)"
+      >
         <div style={{ width: "-webkit-fill-available" }}>
           <div style={{ width: "100%", height: "100%" }}>
             <MapContainer
@@ -84,18 +91,17 @@ function LocationSelect() {
           </div>
           <Button
             variant="contained"
-            className="curved-edges muted-color"
+            className="muted-color"
             size="large"
             onClick={handleClick}
-            sx={{ m: 1, width: 200 }}
+            sx={{ m: 1, width: 200, borderRadius: "6px" }}
           >
             <Typography
               variant="button"
-              fontFamily="Barlow, sans-serif"
               color="white"
               fontWeight="800"
             >
-              Location
+              set location
             </Typography>
           </Button>
         </div>

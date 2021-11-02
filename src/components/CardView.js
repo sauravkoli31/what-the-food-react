@@ -18,6 +18,7 @@ function CardView(props) {
                     flex: "1 0 auto",
                     margin: props.margin || 3 ,
                     width: props.width,
+                    backgroundColor: props.backgroundColor || "rgba(255, 255, 255, 0.35)"
                     // minHeight: 300
                 }}>
                 {props.image && 
@@ -28,11 +29,11 @@ function CardView(props) {
                     alt="green iguana"
                 />
                 }                    
-                <CardContent>
-                    <Typography variant="h5" component="div">
-                        {props.title}
+                <CardContent style={{flexDirection:"row"}}>
+                    <Typography variant="h4" component="div" fontWeight={600}>
+                        {props.title} 
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" component="div" color="text.secondary">
                         {props.description}
                     </Typography>
                 </CardContent>

@@ -6,7 +6,7 @@ import GetRestaurantsButton from "./GetRestaurantsButton";
 
 function QueryView() {
   return (
-    <div className="mainDocument">
+    <div className="mainDocument flex-item">
       <Card
         className="curved-edges glassmorph"
         sx={{ margin: "20px", height: "100%" }}
