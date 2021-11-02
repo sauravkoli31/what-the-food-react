@@ -70,8 +70,9 @@ function GetRestaurantsButton() {
     <Button
       sx={{ m: "24px", width: "auto" }}
       variant="contained"
-      className="curved-edges muted-color-1"
+      className="muted-color-1"
       size="large"
+      disabled={!userData?.cuisineSelect?.length > 0}
       onClick={handleChange}
     >
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -79,7 +80,6 @@ function GetRestaurantsButton() {
           variant="button"
           noWrap
           component="div"
-          fontFamily="Barlow, sans-serif"
           color="white"
           fontWeight="800"
         >

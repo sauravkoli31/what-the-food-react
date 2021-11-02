@@ -54,17 +54,18 @@ function CuisineSelect() {
       <CardView
       title="Cuisine"
       description="What cuisine do you have in mind?"
-      // image={foodPhoto}
+      backgroundColor={userData?.cuisine && "rgba(255,255,255,0.85)"}
       >
         <FormControl sx={{ m: 1, width: "100%" }} className="curved-edges">
-          <InputLabel id="multiple-chip-label">Cuisine</InputLabel>
+          <InputLabel id="multiple-chip-label">{userData?.cuisine ? "Select Cuisines" : "Please wait"}</InputLabel>
           <Select
             labelId="multiple-chip-label"
             id="multiple-chip"
             multiple
             disableRipple
-            className="curved-edges"
-            variant="filled"
+            sx={{
+              borderRadius: "6px",
+            }}
             disabled={!(userData?.cuisine?.length > 0)}
             value={userData?.cuisineSelect}
             onChange={handleChange}
