@@ -37,11 +37,9 @@ function RestaurantView() {
   return (
     <div
       style={{
-        width: "50%",
-        height: "80%",
-        maxHeight: "80%",
         overflow: "-moz-hidden-unscrollable",
       }}
+      className="mainDocument"
     >
       <Card
         className="curved-edges glassmorph"
@@ -139,7 +137,7 @@ function RestaurantView() {
             (data, dataKey) => {
               return (
                 <Card
-                  className="curved-edges foodImages"
+                  className="curved-edges foodImages foodImages_inner"
                   key={dataKey}
                   sx={{
                     boxShadow: 1,
@@ -149,7 +147,6 @@ function RestaurantView() {
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                     position: "relative",
-                    width: "calc(25% - 18px)",
                     height: "200px",
                   }}
                 >

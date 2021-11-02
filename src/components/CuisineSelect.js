@@ -62,6 +62,7 @@ function CuisineSelect() {
             labelId="multiple-chip-label"
             id="multiple-chip"
             multiple
+            disableRipple
             className="curved-edges"
             variant="filled"
             disabled={!(userData?.cuisine?.length > 0)}
@@ -80,6 +81,7 @@ function CuisineSelect() {
             {userData?.cuisine?.map((name) => (
               <MenuItem
                 key={name}
+                disableRipple
                 value={name}
                 style={getStyles(name, userData.cuisineSelect, theme)}
               >
