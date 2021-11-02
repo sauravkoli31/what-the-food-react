@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Card,
   CardActionArea,
@@ -34,12 +34,18 @@ function RestaurantView() {
       })
       .catch((error) => console.error(error));
   }, [userData?.selectedRestaurant]);
+
+  const myRef = useRef(null)
+
+  const executeScroll = () => myRef.current.scrollIntoView()    
+
   return (
     <div
       style={{
         overflow: "-moz-hidden-unscrollable",
       }}
-      className="mainDocument"
+      className="mainDocument flex-item new-item"
+      ref={myRef}
     >
       <Card
         className="curved-edges glassmorph"
@@ -59,6 +65,7 @@ function RestaurantView() {
                 e.target.onerror = null;
                 e.target.src = placeholderHeroBanner;
               }}
+              onLoad={executeScroll}
               sx={{
                 maxHeight: "320px",
               }}
