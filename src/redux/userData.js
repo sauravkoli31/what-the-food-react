@@ -1,11 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// const storeItem = "tummy";
-
-// const initialState = localStorage.getItem(storeItem)
-//   ? JSON.parse(localStorage.getItem(storeItem))
-//   : null;
-
 export const userdataConfig = createSlice({
   name: "userData",
   initialState: {
@@ -16,32 +10,30 @@ export const userdataConfig = createSlice({
     restaurantsList: [],
     selectedRestaurant: null,
     selectedRestaurantLink: null,
+    selectedRestaurantData: null
   },
   reducers: {
     setLocation: (state, action) => {
       state.location = action.payload.location;
-    //   localStorage.setItem(storeItem, JSON.stringify(state));
     },
     setCuisine: (state, action) => {
       state.cuisine = action.payload.cuisine;
       state.locationId = action.payload.id;
-    //   localStorage.setItem(storeItem, JSON.stringify(state));
     },
     setCuisineSelect: (state, action) => {
       state.cuisineSelect = action.payload.cuisineSelect;
-    //   localStorage.setItem(storeItem, JSON.stringify(state));
     },
     setRestaurantsList: (state, action) => {
       state.restaurantsList = action.payload;
-    //   localStorage.setItem(storeItem, JSON.stringify(state));
     },
     setSelectedRestaurant: (state, action) => {
-      state.selectedRestaurant = action.payload;
-    //   localStorage.setItem(storeItem, JSON.stringify(state));
+        state.selectedRestaurant = action.payload;
     },
     setSelectedRestaurantLink: (state, action) => {
       state.selectedRestaurantLink = action.payload;
-    //   localStorage.setItem(storeItem, JSON.stringify(state));
+    },
+    setSelectedRestaurantData: (state, action) => {
+      state.selectedRestaurantData = action.payload
     },
     removeSelected: (state) => {
       state.selectedRestaurant = null;
@@ -55,7 +47,6 @@ export const userdataConfig = createSlice({
       state.restaurantsList = [];
       state.selectedRestaurant = null;
       state.selectedRestaurantLink = null;
-    //   localStorage.removeItem(storeItem);
     },
   },
 });
@@ -67,6 +58,7 @@ export const {
   setRestaurantsList,
   setSelectedRestaurant,
   setSelectedRestaurantLink,
+  setSelectedRestaurantData,
   removeSelected,
   removeAll,
 } = userdataConfig.actions;

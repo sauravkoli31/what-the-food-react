@@ -62,7 +62,6 @@ function CuisineSelect() {
             labelId="multiple-chip-label"
             id="multiple-chip"
             multiple
-            disableRipple
             sx={{
               borderRadius: "6px",
             }}
@@ -82,7 +81,6 @@ function CuisineSelect() {
             {userData?.cuisine?.map((name) => (
               <MenuItem
                 key={name}
-                disableRipple
                 value={name}
                 style={getStyles(name, userData.cuisineSelect, theme)}
               >

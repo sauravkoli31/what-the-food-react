@@ -18,6 +18,9 @@ theme.typography.h2 = {
     fontSize: "3.75rem",
   },
 };
+theme.typography.h6 = {
+  fontSize: "0.675rem"
+};
 
 require("dotenv").config();
 function App() {
