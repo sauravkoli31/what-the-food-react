@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Button, Typography } from "@mui/material";
 import CardView from "./CardView";
 import { useSelector, useDispatch } from "react-redux";
-import { setLocation, setCuisine, removeAll } from "../redux/userData";
+import { setLocation, setCuisine, removeAll, setCuisineSelect } from "../redux/userData";
 
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -17,7 +17,10 @@ function CenterPosition({ map }) {
   const onMove = useCallback(() => {
     dispatch(
       setLocation({
-        location: map.getCenter(),
+        location: {
+          lat: map.getCenter().lat,
+          lng: map.getCenter().lng
+        },
       })
     );
   }, [map]);
@@ -43,7 +46,17 @@ function LocationSelect() {
     };
   }, []);
 
-  const handleClick = (event) => {
+  useEffect(() => {
+    dispatch(setCuisine({
+      cuisine: null,
+      id: null
+    }))
+    dispatch(setCuisineSelect({
+      cuisineSelect: []
+    }))
+  }, [userData?.location])
+
+  const handleClick = () => {
     if (userData?.location !== null) {
       let urlencoded = new URLSearchParams();
       urlencoded.append("latitude", userData?.location?.lat);
@@ -60,9 +73,10 @@ function LocationSelect() {
         })
         .catch((error) => console.error(error));
     } else {
-      window.alert("Please select a location in the map. Alternatively you can click on the map and allow the permission to get your location.")
+      window.alert(
+        "Please select a location in the map. Alternatively you can click on the map and allow the permission to get your location."
+      );
     }
-    
   };
 
   return (
@@ -96,11 +110,7 @@ function LocationSelect() {
             onClick={handleClick}
             sx={{ m: 1, width: 200, borderRadius: "6px" }}
           >
-            <Typography
-              variant="button"
-              color="white"
-              fontWeight="800"
-            >
+            <Typography variant="button" color="white" fontWeight="800">
               set location
             </Typography>
           </Button>
