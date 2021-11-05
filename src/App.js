@@ -6,6 +6,8 @@ import QueryView from "./components/QueryView";
 import { Card, CardActionArea, CardMedia } from "@mui/material";
 import { useSelector } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import ReactGA from 'react-ga'
+import { useEffect } from "react";
 
 const theme = createTheme();
 
@@ -24,6 +26,11 @@ theme.typography.h6 = {
 
 require("dotenv").config();
 function App() {
+  useEffect(() => {
+    ReactGA.initialize(process.env.REACT_APP_TRACKING_ID)
+    ReactGA.pageview(window.location.pathname + window.location.search);
+    
+  }, [])
   const userData = useSelector((state) => state.userData);
   const githubLinks = [
     "https://github.com/sauravkoli31/what-the-food-react",
