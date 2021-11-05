@@ -77,8 +77,8 @@ function MiniInfoCards(props) {
 
 function RestaurantView() {
   const userData = useSelector((state) => state.userData);
-  const myRef = useRef(null);
   const dispatch = useDispatch();
+  const myRef = useRef(null);
   const executeScroll = () => myRef.current.scrollIntoView();
 
   let topSellingItemPresent =

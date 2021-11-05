@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import { useTheme } from '@mui/material/styles';
 import CardView from "./CardView";
 import Box from '@mui/material/Box';
@@ -49,6 +49,9 @@ function CuisineSelect() {
     }))
   };
 
+  const myRef = useRef(null);
+  const executeScroll = () => myRef.current.scrollIntoView();
+
   return (
     <div>
       <CardView
@@ -59,6 +62,8 @@ function CuisineSelect() {
         <FormControl sx={{ m: 1, width: "100%" }} className="curved-edges">
           <InputLabel id="multiple-chip-label">{userData?.cuisine ? "Select Cuisines" : "Please wait"}</InputLabel>
           <Select
+          ref={myRef}
+          onLoad={executeScroll}
             labelId="multiple-chip-label"
             id="multiple-chip"
             multiple
