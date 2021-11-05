@@ -14,7 +14,40 @@ import {
   setSelectedRestaurantData,
 } from "../redux/userData";
 import StarIcon from "@mui/icons-material/Star";
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+
+const colorCodes = {
+  open: "rgb(0,187,0)",
+  closed: "rgb(255, 68, 0)",
+  busy: "rgb(255, 166, 0)",
+  rating: "rgb(255, 166, 0)",
+  accessTime: "#ff7f50",
+};
+
+function ColorCards(props) {
+  return (
+    <Card
+      sx={{
+        padding: "0.5rem",
+        marginLeft: "0.5rem",
+        display: "inline-flex",
+        alignItems: "center",
+        backgroundColor: colorCodes[props.color] || "#f3aa80",
+      }}
+      className={props.hideOnPhone && "hideOnXs"}
+    >
+      {props.children}
+      <Typography
+        variant="button"
+        sx={{
+          color: "white",
+        }}
+      >
+        {props.text}
+      </Typography>
+    </Card>
+  );
+}
 
 function MiniInfoCards(props) {
   return (
@@ -22,7 +55,7 @@ function MiniInfoCards(props) {
       variant="outlined"
       sx={{
         padding: "0.5rem",
-        marginX: "0.3rem",
+        margin: "0.3rem",
         width: "fit-content",
         backgroundColor: "#8d8d8d",
       }}
@@ -33,7 +66,7 @@ function MiniInfoCards(props) {
           // fontWeight: 800,
           color: "white",
           fontSize: "0.675em",
-          letterSpacing: "0.2em",
+          // letterSpacing: "0.2em",
         }}
       >
         {props?.title.toUpperCase()} : {props?.value}
@@ -72,7 +105,9 @@ function RestaurantView() {
   useEffect(() => {
     dispatch(setSelectedRestaurantData(null));
     if (userData?.selectedRestaurantLink) {
-      let mostSellingItems = userData?.selectedRestaurant?.mostSellingItems.map(item => item.id)
+      let mostSellingItems = userData?.selectedRestaurant?.mostSellingItems.map(
+        (item) => item.id
+      );
       let urlencoded = new URLSearchParams();
       urlencoded.append("url", userData?.selectedRestaurantLink);
       urlencoded.append("mSI", mostSellingItems);
@@ -130,71 +165,31 @@ function RestaurantView() {
                   top: 0,
                   right: 0,
                   margin: "1rem",
-                  display: "flex"
+                  display: "flex",
                 }}
-                >
-                <Card
-                  sx={{
-                    padding: "0.5rem",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    marginLeft: "0.5rem",
-                  }}
-                  className={`defaultBg ${userData?.selectedRestaurantData?.status?.toLowerCase()}`}
-                  >
-                  <Typography
-                    variant="subtitle2"
-                    sx={{
-                      fontWeight: 800,
-                      color: "white",
-                      fontSize: "1em",
-                    }}
-                    >
-                    {userData?.selectedRestaurantData?.status.toUpperCase()}
-                  </Typography>
-                </Card>
-                <Card
-                  sx={{
-                    marginLeft: "0.5rem",
-                    padding: "0.5rem",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    backgroundColor: "orange",
-                  }}
+              >
+                <ColorCards
+                  text={userData?.selectedRestaurantData?.status.toUpperCase()}
+                  color={userData?.selectedRestaurantData?.status.toLowerCase()}
+                />
+
+                <ColorCards
+                  text={
+                    userData?.selectedRestaurantData?.rate > 0
+                      ? userData?.selectedRestaurantData?.rate
+                      : "NA"
+                  }
+                  color="rating"
                 >
                   <StarIcon sx={{ fontSize: "1em", color: "white" }} />
-                  <Typography
-                    variant="subtitle2"
-                    sx={{
-                      fontWeight: 800,
-                      color: "white",
-                      fontSize: "1em",
-                    }}
-                  >
-                    {userData?.selectedRestaurantData?.rate > 0 ? userData?.selectedRestaurantData?.rate : "NA" }
-                  </Typography>
-                </Card>
-                <Card
-                  sx={{
-                    marginLeft: "0.5rem",
-                    padding: "0.5rem",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    backgroundColor: "coral",
-                  }}
+                </ColorCards>
+                <ColorCards
+                  text={userData?.selectedRestaurantData?.deliverySchedule}
+                  color="accessTime"
+                  hideOnPhone
                 >
-                  <AccessTimeIcon sx={{ color: "white" }} />
-                  <Typography
-                    variant="subtitle2"
-                    sx={{
-                      fontWeight: 800,
-                      color: "white",
-                      fontSize: "1em",
-                    }}
-                  >
-                    {userData?.selectedRestaurantData?.deliverySchedule}
-                  </Typography>
-                </Card>
+                  <AccessTimeIcon sx={{ fontSize: "1em",color: "white" }} />
+                </ColorCards>
               </div>
             )}
           </CardActionArea>
@@ -207,8 +202,8 @@ function RestaurantView() {
           }}
         >
           <CardContent
-            className="mainContent "
-            style={{ justifyContent: "flex-start" }}
+            className="mainContent resBlock"
+            // style={{ justifyContent: "flex-start" }}
           >
             <CardMedia
               component="img"
@@ -304,12 +299,18 @@ function RestaurantView() {
         <div className={"mainContent foodContent"} style={{ margin: "4px" }}>
           {userData?.selectedRestaurant?.mostSellingItems?.map(
             (data, dataKey) => {
-              let mSIPrice = 0
-              let showPrice = false
-              if (userData?.selectedRestaurantData?.mostSellingItemsPrices.length > 1){
-                let mostSellingItem = userData?.selectedRestaurantData?.mostSellingItemsPrices?.filter(food => food?.id === data?.id)
-                mSIPrice = mostSellingItem[0]?.price || "NA"
-                showPrice = true
+              let mSIPrice = 0;
+              let showPrice = false;
+              if (
+                userData?.selectedRestaurantData?.mostSellingItemsPrices
+                  .length > 1
+              ) {
+                let mostSellingItem =
+                  userData?.selectedRestaurantData?.mostSellingItemsPrices?.filter(
+                    (food) => food?.id === data?.id
+                  );
+                mSIPrice = mostSellingItem[0]?.price || "NA";
+                showPrice = true;
               }
               return (
                 <Card
@@ -350,24 +351,21 @@ function RestaurantView() {
                     sx={{
                       position: "absolute",
                       top: 0,
-                      right:0 ,
+                      right: 0,
                       color: "white",
                     }}
                   >
                     <Card>
-                    <Typography
-                      component="div"
-                      variant="button"
-                      sx={{
-                        lineHeight: 1.2,
-                        padding: 0.7
-                      }}
-                    >
-                      {showPrice && `AED ${mSIPrice}`}
-
-
-
-                    </Typography>
+                      <Typography
+                        component="div"
+                        variant="button"
+                        sx={{
+                          lineHeight: 1.2,
+                          padding: 0.7,
+                        }}
+                      >
+                        {showPrice && `AED ${mSIPrice}`}
+                      </Typography>
                     </Card>
                   </CardContent>
                 </Card>

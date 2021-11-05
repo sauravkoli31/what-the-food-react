@@ -4,7 +4,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #eae7dc;
-  background-image: url('./static/images/food.svg');
+  /* background-image: url('./static/images/food.svg'); */
   background-repeat:repeat;
   background-size:auto;
   backdrop-filter: blur(4px) !important;
@@ -174,17 +174,17 @@ img.leaflet-marker-icon
   .github{
     display: none;
   }
-}
-
-.defaultBg{
-  background-color: #f3aa80;
-}
-.open{
-  background-color: rgb(0, 187, 0) !important;
-}
-.closed{
-  background-color: orangered !important;
-}
-.busy{
-  background-color: orange !important;
+  .resBlock {
+    flex-direction: column;
+  }
+  .resBlock > * {
+    margin: 0 !important;
+    text-align: inherit !important;
+  }
+  .resBlock > img{
+    transform: translateY(-75%) scale(2) !important;
+  }
+  .hideOnXs{
+    display: none !important;
+  }
 }
